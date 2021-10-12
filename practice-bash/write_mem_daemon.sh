@@ -9,11 +9,11 @@ fi
 
 while true
 do
-  line=$(free -m | grep "^Mem:.*$" | awk '{print $2;print $3;}')
+  line=$(used -m | grep "^Mem:.*$" | awk '{print $2;print $3;}')
   total=$(echo "$line" | sed '1q;d')
-  free=$(echo "$line" | sed '2q;d')
-  usage=$(((free * 100) / total))
+  used=$(echo "$line" | sed '2q;d')
+  usage=$(((used * 100) / total))
   time=$(date -u +%m-%d-%Y%Z%T)
-  echo "$time;$total;$free;$usage" >> $file
+  echo "$time;$total;$used;$usage" >> $file
   sleep 6
 done
