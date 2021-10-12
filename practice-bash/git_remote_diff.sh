@@ -11,6 +11,6 @@ diff_file="$script_dir/diff.txt"
 git clone -b "$branch1" -- "$url" "$project_dir" && \
 cd "$project_dir" && \
 git fetch origin "$branch2" && \
-git diff origin/"$branch2" > "$diff_file" && \
+git diff origin/"$branch2" --output="$diff_file" --summary && \
 cd "$work_dir" && \
 rm -rf "$project_dir"
