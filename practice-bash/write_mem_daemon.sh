@@ -2,6 +2,12 @@
 
 daemon_script_dir=$(dirname "$(realpath "$0")")
 csv_file=$daemon_script_dir/mem.txt
+parent_exec_name=$(ps -o comm= $PPID)
+
+if [ "$parent_exec_name" = "bash" ]; then
+  echo "unsupported usage"
+  exit 1
+fi
 
 if [ ! -f "$csv_file" ]
 then
