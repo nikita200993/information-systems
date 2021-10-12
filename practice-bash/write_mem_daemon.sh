@@ -15,5 +15,5 @@ do
   usage=$(((used * 100) / total))
   time=$(date -u +%m-%d-%Y%Z%T)
   echo "$time;$total;$used;$usage" >> $file
-  sleep 6
+  sleep 600
 done
