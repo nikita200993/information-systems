@@ -1,10 +1,11 @@
 #!/bin/bash
 
-file=mem.txt
+daemon_script_dir=$(dirname "$(realpath "$0")")
+csv_file=$daemon_script_dir/mem.txt
 
-if [ ! -f $file ]
+if [ ! -f "$csv_file" ]
 then
-  echo "timestamp;all_memory;free_memory;%usaged" > $file
+  echo "timestamp;all_memory;free_memory;%usaged" > "$csv_file"
 fi
 
 while true
@@ -14,6 +15,6 @@ do
   used=$(echo "$line" | sed '2q;d')
   usage=$(((used * 100) / total))
   time=$(date -u +%m-%d-%Y%Z%T)
-  echo "$time;$total;$used;$usage" >> $file
+  echo "$time;$total;$used;$usage" >> "$csv_file"
   sleep 600
 done
