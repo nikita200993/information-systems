@@ -9,7 +9,7 @@ fi
 
 while true
 do
-  line=$(used -m | grep "^Mem:.*$" | awk '{print $2;print $3;}')
+  line=$(free -m | grep "^Mem:.*$" | awk '{print $2;print $3;}')
   total=$(echo "$line" | sed '1q;d')
   used=$(echo "$line" | sed '2q;d')
   usage=$(((used * 100) / total))
