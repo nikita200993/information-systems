@@ -1,0 +1,15 @@
+{
+  "listeners": {
+    "*:8899": {
+      "pass": "applications/nikitaaero"
+    }
+  },
+
+  "applications": {
+    "nikitaaero":  {
+       "type": "external",
+       "working_directory": "{{ ansible_env.HOME }}/nikitaaero/app",
+       "executable": "bin/app"
+    }
+  }
+}

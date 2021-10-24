@@ -1,0 +1,2 @@
+dev_unit_package_name: unit-devel
+unit_socket_path: /var/run/unit/control.sock
